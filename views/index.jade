@@ -1,0 +1,43 @@
+
+doctype html
+html(lang="en")
+head
+title SmartDiary
+meta(name="viewport" content="width=device-width, initial-scale=1.0")
+link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
+script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js")
+link(rel="stylesheet" href="/style.css")
+script(src="../speech.sdk.js")
+script(src="../recognition.js")
+script(src="../index.js")
+
+body(class="bgr-img-logged")
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+        a.navbar-brand(href='#') SmartDiary
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+                li.nav-item.active
+                    a.nav-link(href='/')
+                        | Add memory
+                        span.sr-only (current)
+                li.nav-item
+                    a.nav-link(href='/memories') My memories
+
+    fieldset#add-memory
+        form(method="post" action="/" )
+            label
+                | Title
+                input(name="title" type="text" class="form-control" placeholder="eg. Title")
+            label
+                | Date
+                input(name="date" type="date" class="form-control" )
+            label
+                | Result
+                textarea(name="memory" rows="5" class="form-control" id="phraseDiv")
+            input(type="submit" value="Save memory" class="btn btn-primary" )
+        button(class="btn btn-success small" id="startBtn") Start listening
+        button(class="btn btn-danger small" disabled="disabled" id="stopBtn") Stop listening
+        div(id="statusDiv")
+
